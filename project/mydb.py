@@ -8,7 +8,7 @@ database = mysql.connector.connect(
     auth_plugin="mysql_native_password",
     use_pure=True,
     ssl_disabled=True,
-    connection_timeout=5
+    connection_timeout=5,
 )
 
 cursor = database.cursor()

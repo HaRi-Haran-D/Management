@@ -27,14 +27,21 @@ def logout_user(request):
 def register_user(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
-        if form.is_vaild():
-            form.save()
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password1']
-            user = authenticate(username=username,password=password)
-            login(request,user)
-            messages.success(request,'Registration successful.')
-            return redirect('home')
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'Registration successful.')
+                return redirect('home')
+            else:
+                messages.warning(request, 'Registration saved but unable to log you in automatically. Please log in.')
+                return redirect('home')
+        else:
+            # Form invalid -> re-render with errors
+            return render(request, 'register.html', {'form': form})
     else:
         form = SignUpForm()
-        return render(request, 'register.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
