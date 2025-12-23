@@ -1,8 +1,14 @@
 {% extends 'home.html' %}
 {% block content %}
-<div class="container">
+<div class="container-fluid">
     {% if user.is_authenticated %}
+    <div class="table-responsive mw-100">
     <h1>Records</h1>
+    <style>
+        .table { table-layout: fixed; }
+        .table td, .table th { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+        @media (max-width: 100%) { .table td, .table th { white-space: normal; } }
+    </style>
     <table class="table table-dark table-striped table-bordered">
         <thead>
             <tr>
@@ -20,7 +26,7 @@
             {% if records %}
                 {% for record in records %}
                     <tr>
-                        <td>{{ record.id }}</td>
+                        <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
                         <td>{{ record.first_name }}{{ record.last_name }}</td>
                         <td>{{ record.email }}</td>
                         <td>{{ record.address }}</td>
@@ -33,16 +39,17 @@
             {% endif %}
         </tbody>
     </table>
+    </div>
     {% else %}
     <div class="d-flex flex-column justify-center align-items-center">
         <h1 class="text-center mb-4">Login</h1>
-        <form action="{% url 'home' %}" method="post" class="w-25 text-center">
+        <form action="{% url 'home' %}" method="post" class="w-50 text-center">
             {% csrf_token %}
             <div class="mb-3">
-                <input type="text" name="username" class="form-control w-100" placeholder="Username" required>
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
             </div>
             <div class="mb-3">
-                <input type="password" name="password" class="form-control w-100" placeholder="Password" required>
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
             </div>
             <button type="submit" class="btn btn-secondary">Login</button>
         </form>
