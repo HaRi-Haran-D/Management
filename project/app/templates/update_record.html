@@ -1,0 +1,12 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="d-flex flex-column justify-center align-items-center">
+    <h1>Add Record</h1>
+    <form method="post" class="w-50 text-center">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-secondary">Update</button>
+    </form>
+</div>
+
+{% endblock %}
