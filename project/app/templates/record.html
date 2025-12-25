@@ -1,21 +1,23 @@
 {% extends 'home.html' %}
 {% block content %}
-<div class="card" style="width: 50%;">
-  <div class="card-header text-center">
-    {{ customer_record.first_name }}{{ customer_record.last_name }}
+<main>
+  <div class="card" style="width: 50%;">
+    <div class="card-header text-center">
+      {{ customer_record.first_name }}{{ customer_record.last_name }}
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>ID: </strong>{{ customer_record.id }}</li>
+      <li class="list-group-item"><strong>Email: </strong>{{ customer_record.email }}</li>
+      <li class="list-group-item"><strong>Address: </strong>{{ customer_record.address }}</li>
+      <li class="list-group-item"><strong>City: </strong>{{ customer_record.city }}</li>
+      <li class="list-group-item"><strong>State: </strong>{{ customer_record.state }}</li>
+      <li class="list-group-item"><strong>Pincode: </strong>{{ customer_record.pincode }}</li>
+      <li class="list-group-item"><strong>Created At: </strong>{{ customer_record.created_at }}</li>
+    </ul>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>ID: </strong>{{ customer_record.id }}</li>
-    <li class="list-group-item"><strong>Email: </strong>{{ customer_record.email }}</li>
-    <li class="list-group-item"><strong>Address: </strong>{{ customer_record.address }}</li>
-    <li class="list-group-item"><strong>City: </strong>{{ customer_record.city }}</li>
-    <li class="list-group-item"><strong>State: </strong>{{ customer_record.state }}</li>
-    <li class="list-group-item"><strong>Pincode: </strong>{{ customer_record.pincode }}</li>
-    <li class="list-group-item"><strong>Created At: </strong>{{ customer_record.created_at }}</li>
-  </ul>
-</div>
 
-<a href="{% url 'home' %}" class="btn btn-secondary mt-4">Back to Home</a>
-<a href="{% url 'delete_record' customer_record.id %}" class="btn btn-outline-danger mt-4">Delete</a>
-<a href="{% url 'update_record' customer_record.id %}" class="btn btn-secondary mt-4">Update</a>
+  <a href="{% url 'home' %}" class="btn btn-secondary mt-4">Back to Home</a>
+  <a href="{% url 'delete_record' customer_record.id %}" class="btn btn-outline-danger mt-4">Delete</a>
+  <a href="{% url 'update_record' customer_record.id %}" class="btn btn-secondary mt-4">Update</a>
+</main>
 {% endblock %}

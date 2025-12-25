@@ -1,6 +1,6 @@
 {% extends 'home.html' %}
 {% block content %}
-<div class="container-fluid">
+<main class="container-fluid">
     {% if user.is_authenticated %}
     <div class="table-responsive mw-100">
     <h1>Records</h1>
@@ -54,6 +54,6 @@
             <button type="submit" class="btn btn-secondary">Login</button>
         </form>
     </div>
-</div>
+</main>
 {% endif %}
 {% endblock %}
