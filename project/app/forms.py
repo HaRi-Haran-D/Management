@@ -30,7 +30,6 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = ''
 
-
 class AddRecordForm(forms.ModelForm):
     first_name = forms.CharField(label="",required=True, max_length=30, widget=forms.TextInput(attrs={'class':'form-control','placeholder':'First Name'}))
     last_name = forms.CharField(label="",required=True, max_length=30, widget=forms.TextInput(attrs={'class':'form-control','placeholder':'Last Name'}))

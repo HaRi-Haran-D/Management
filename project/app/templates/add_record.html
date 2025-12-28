@@ -1,9 +1,9 @@
 {% extends 'home.html' %}
 {% block content %}
-<section>
-    <div class="d-flex flex-column justify-center align-items-center">
+<section class="mh-75">
+    <div class="d-flex flex-column justify-center align-items-center border">
         <h1>Add Record</h1>
-        <form action="{% url 'add_record' %}" method="post" class="w-50 text-center">
+        <form action="{% url 'add_record' %}" method="post" class="w-50">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-secondary">Add</button>
