@@ -42,7 +42,6 @@ def register_user(request):
                 messages.warning(request, 'Registration saved but unable to log you in automatically. Please log in.')
                 return redirect('home')
         else:
-            # Form invalid -> re-render with errors
             return render(request, 'register.html', {'form': form})
     else:
         form = SignUpForm()
